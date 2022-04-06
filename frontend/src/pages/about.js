@@ -1,11 +1,11 @@
 import MainLayout from "../components/MainLayout/MainLayout";
 
-const HomePage = () => {
+const AboutPage = () => {
   return (
     <MainLayout title={'Diabetes Helper'}>
-      <h2>Main Page</h2>
+      <h2>About Page</h2>
     </MainLayout>
   )
 }
 
-export default HomePage;
+export default AboutPage;

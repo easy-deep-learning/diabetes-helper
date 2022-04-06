@@ -1,11 +1,11 @@
 import MainLayout from "../components/MainLayout/MainLayout";
 
-const HomePage = () => {
+const Calculator = () => {
   return (
     <MainLayout title={'Diabetes Helper'}>
-      <h2>Main Page</h2>
+      <h2>Calculator</h2>
     </MainLayout>
   )
 }
 
-export default HomePage;
+export default Calculator;
