@@ -1,0 +1,10 @@
+.app {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1em 1.5em;
+
+  &__title {
+    font-size: 2em;
+    text-align: center;
+  }
+}
