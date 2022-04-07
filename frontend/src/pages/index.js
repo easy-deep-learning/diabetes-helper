@@ -1,11 +1,5 @@
-import MainLayout from "../components/MainLayout/MainLayout";
+import MainLayout from "../layouts/MainLayout";
 
-const HomePage = () => {
-  return (
-    <MainLayout title={'Diabetes Helper'}>
-      <h2>Main Page</h2>
-    </MainLayout>
-  )
+export default function MainPage() {
+  return <MainLayout />
 }
-
-export default HomePage;
