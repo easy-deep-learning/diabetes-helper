@@ -4,11 +4,11 @@ import Header from "../../components/Header/Header";
 import HeadComponent from "../../components/HeadComponent/HeadComponent";
 
 export default function PageTemplate(props) {
-  const { children } = props;
+  const { children, title } = props;
   return (
     <>
       <HeadComponent />
-      <Header />
+      <Header title={title} />
       <main>
         <div className="container">
           {children}

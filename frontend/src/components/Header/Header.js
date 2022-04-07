@@ -2,10 +2,12 @@ import Link from "next/link"
 import style from './Header.module.scss';
 
 export default function Header(props) {
+  const title = props.title ? props.title : 'Diabetes Helper';
+
   return (
     <header className={style.header}>
       <div className={`container ${style.header__container}`}>
-        <h1 className={style.header__title}>{props.title}</h1>
+        <h1 className={style.header__title}>{title}</h1>
         <nav className={style.nav}>
           <ul className={style.list}>
             <li className={style.item}><Link href='/'>Main Page</Link></li>
