@@ -2,6 +2,7 @@
   "name": "diabetes-helper_frontend",
   "version": "1.0.0",
   "dependencies": {
+    "mongodb": "^4.5.0",
     "next": "^12.1.4",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
