@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import Input from "../../Input/input";
+
 import style from './coefficient.module.scss'
 
 export default function СarbohydrateСoefficient() {
@@ -15,6 +17,8 @@ export default function СarbohydrateСoefficient() {
     setList(arr);
   }, []);
 
+
+
   const onChange = (e, i) => {
     const newValue = +e.target.value;
     if (newValue == list[i].value) return;
@@ -25,6 +29,7 @@ export default function СarbohydrateСoefficient() {
   }
 
   const interpolation = (arr) => {
+    console.log(arr);
     if (arr[0].auto) { arr[0].value = 1 };
     if (arr[23].auto) { arr[23].value = 1 };
     const newArr = [];
@@ -38,7 +43,7 @@ export default function СarbohydrateСoefficient() {
         };
         const elem = {
           auto: true,
-          value: newArr[a-1].value + increment
+          value: newArr[a - 1].value + increment
         };
         newArr.push(elem);
       };
@@ -65,7 +70,7 @@ export default function СarbohydrateСoefficient() {
           calcInterval(prev, next);
         };
         if (!arr.filter(item => !item.auto)[0]) {
-          newArr = arr.map(item => ({auto: true,value: 1}));
+          newArr = arr.map(item => ({ auto: true, value: 1 }));
         }
       });
 
@@ -81,25 +86,24 @@ export default function СarbohydrateСoefficient() {
     interpolation(newList);
   }
 
-  const renderList = () => {
+  const renderList = list.map((item, i) => {
     return (
-      list.map((item, i) => {
-        return (
-          <li key={i} className={style.item}>
-            <label className={style.label}>
-              <div className={style.desc}>
-                <span>{i} o'clock</span>
-                <button onClick={() => onAuto(i)} type='button' className={`${style.button} ${item.auto === true ? style.button_auto : null}`}>auto</button>
-              </div>
-              <input className={style.input} type="text" value={item.value.toFixed(2)}
-                onChange={e => onChange(e, i)} />
-            </label>
-            <div></div>
-          </li>
-        )
-      })
+      <li key={i} className={style.item}>
+        <label className={style.label}>
+          <div className={style.desc}>
+            <span>{i} o'clock</span>
+            <button onClick={() => onAuto(i)} type='button' className={`${style.button}
+                 ${item.auto === true ? style.button_auto : null}`}
+            >auto</button>
+          </div>
+          <Input type={'text'} value={item.value.toFixed(2)}
+            onChange={onChange} serialNumber={i}
+          />
+        </label>
+        <div></div>
+      </li>
     )
-  }
+  })
 
   return (
     <div>
@@ -108,7 +112,7 @@ export default function СarbohydrateСoefficient() {
       </h2>
       <form>
         <ul className={style.list}>
-          {renderList()}
+          {renderList}
         </ul>
       </form>
     </div>

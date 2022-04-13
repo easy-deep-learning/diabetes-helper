@@ -1,4 +1,4 @@
-import CalculatorLayout from "../layouts/CalculatorLayout"
+import CalculatorLayout from "../layouts/CalculatorLayout/CalculatorLayout"
 
 export default function CalculatorPage() {
   return <CalculatorLayout />
