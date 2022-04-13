@@ -1,11 +1,5 @@
-import MainLayout from "../components/MainLayout/MainLayout";
+import AboutLayout from "../layouts/AboutLayout"
 
-const AboutPage = () => {
-  return (
-    <MainLayout title={'Diabetes Helper'}>
-      <h2>About Page</h2>
-    </MainLayout>
-  )
+export default function AboutPage() {
+  return <AboutLayout />
 }
-
-export default AboutPage;

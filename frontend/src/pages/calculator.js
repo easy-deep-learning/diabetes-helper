@@ -1,11 +1,5 @@
-import MainLayout from "../components/MainLayout/MainLayout";
+import CalculatorLayout from "../layouts/CalculatorLayout"
 
-const Calculator = () => {
-  return (
-    <MainLayout title={'Diabetes Helper'}>
-      <h2>Calculator</h2>
-    </MainLayout>
-  )
+export default function CalculatorPage() {
+  return <CalculatorLayout />
 }
-
-export default Calculator;
