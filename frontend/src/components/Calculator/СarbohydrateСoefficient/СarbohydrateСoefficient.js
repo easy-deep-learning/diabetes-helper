@@ -8,31 +8,41 @@ export default function СarbohydrateСoefficient() {
 
   const [list, setList] = useState([]);
 
+
   useEffect(() => {
-    let arr = [];
-    for (let i = 0; i < 24; i++) {
-      const obj = { auto: true, value: 1 }
-      arr.push(obj);
-    }
-    setList(arr);
+    setList([...Array(24)].map(() => ({ auto: true, value: 1 })));
   }, []);
 
-
-
-  const onChange = (e, i) => {
+  const changeInput = (e, i) => {
     const newValue = +e.target.value;
     if (newValue == list[i].value) return;
-    const newList = JSON.parse(JSON.stringify(list));
+    // const newList = JSON.parse(JSON.stringify(list));
+    const newList = list;
     newList[i].auto = false;
     newList[i].value = newValue;
     interpolation(newList);
   }
 
   const interpolation = (arr) => {
-    console.log(arr);
-    if (arr[0].auto) { arr[0].value = 1 };
-    if (arr[23].auto) { arr[23].value = 1 };
-    const newArr = [];
+
+    const onlyZero = () => {
+      const increment = (1 - arr[0].value) / (arr.length - 2);
+      for (let i = 0; i < arr.length; i++) {
+        if (i === 0) {
+          newArr.push(arr[i])
+        } else if (i === (arr.length - 1)) {
+          newArr.push(arr[i])
+        } else {
+          const elem = {
+            auto: true,
+            value: newArr[i - 1].value + increment
+          };
+          newArr.push(elem);
+        };
+      };
+
+      setList(newArr);
+    };
 
     const calcInterval = (prev = 0, next) => {
       const increment = (arr[next].value - arr[prev].value) / (next - prev);
@@ -73,15 +83,23 @@ export default function СarbohydrateСoefficient() {
           newArr = arr.map(item => ({ auto: true, value: 1 }));
         }
       });
-
       setList(newArr);
     }
+
+    // console.log(arr);
+    if (arr[0].auto) { arr[0].value = 1 };
+    if (arr[23].auto) { arr[23].value = 1 };
+    const newArr = [];
+    if (!arr[0].auto && (arr.filter(item => !item.auto).length === 1)) {
+      onlyZero();
+      return;
+    };
     calc();
-    setList(newArr);
   }
 
   const onAuto = (i) => {
-    const newList = JSON.parse(JSON.stringify(list));
+    // const newList = JSON.parse(JSON.stringify(list));
+    const newList = list;
     newList[i].auto = true;
     interpolation(newList);
   }
@@ -97,7 +115,7 @@ export default function СarbohydrateСoefficient() {
             >auto</button>
           </div>
           <Input type={'text'} value={item.value.toFixed(2)}
-            onChange={onChange} serialNumber={i}
+            changeInput={changeInput} serialNumber={i}
           />
         </label>
         <div></div>
