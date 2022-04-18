@@ -1,5 +1,3 @@
-import { Children } from "react";
-
 import Header from "../../components/Header/Header";
 import HeadComponent from "../../components/HeadComponent/HeadComponent";
 
